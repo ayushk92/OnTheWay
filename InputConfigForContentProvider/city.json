@@ -1,0 +1,11 @@
+{
+    "documentation": "Zomato city data.",
+    "fields": [
+        {
+            "documentation": "city name",
+            "name": "name",
+            "type": "String",
+            "nullable": false
+        }
+        ]
+}

@@ -1,0 +1,54 @@
+{
+    "documentation": "Zomato restaurant data.",
+    "fields": [
+       
+        {
+            "documentation": "zomato restaurant name",
+            "name": "restaurant_name",
+            "type": "String",
+            "nullable": false
+        },
+        {
+            "documentation": "zomato pin code",
+            "name": "pincode",
+            "type": "String",
+            "nullable": false
+        },
+        {
+            "documentation": "restaurant address",
+            "name": "address",
+            "type": "String",
+            "nullable": false
+        },
+        {
+            "documentation": "restaurant locality",
+            "name": "locality",
+            "type": "String",
+            "nullable": false
+        },
+        {
+            "documentation": "restaurant city",
+            "name": "city",
+            "type": "String",
+            "nullable": false
+        },
+        {
+            "documentation": "restaurant latitude",
+            "name": "latitude",
+            "type": "Double",
+            "nullable": false
+        },
+        {
+            "documentation": "restaurant longitude",
+            "name": "longitude",
+            "type": "Double",
+            "nullable": false
+        },
+        {
+            "documentation": "restaurant has online delivery",
+            "name": "hasOnlineDelivery",
+            "type": "Boolean",
+            "nullable": false
+        }
+    ]
+}

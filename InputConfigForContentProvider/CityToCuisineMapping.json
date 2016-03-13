@@ -1,0 +1,31 @@
+{
+    "documentation": "Zomato city to cuisine mapping.",
+    "fields": [
+            {
+                "documentation": "zomato cuisine id",
+                "name": "cuisine_id",
+                "type": "Integer",
+                "nullable": false
+            },
+            {
+                "documentation": "zomato city id",
+                "name": "city_id",
+                "type": "Integer",
+                "nullable": false
+            }
+        ],
+    "constraints": [
+            {
+                "name": "unique_mapping",
+                "definition": "UNIQUE (cuisine_id, city_id) "
+            },
+            {
+                "name": "foreignKey_cuisineId",
+                "definition": "FOREIGN KEY(cuisine_id) REFERENCES cuisine(_ID) "
+            },
+            {
+                "name": "foreignKey_cityId",
+                "definition": "FOREIGN KEY(city_id) REFERENCES city(_ID) "
+            }
+    ]
+}

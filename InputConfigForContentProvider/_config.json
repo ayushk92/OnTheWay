@@ -1,0 +1,13 @@
+{
+    "syntaxVersion": 3,
+    "projectPackageId": "com.example.mynanodegreeapps.ontheway",
+    "authority": "com.example.mynanodegreeapps.ontheway.provider",
+    "providerJavaPackage": "com.example.mynanodegreeapps.ontheway.provider",
+    "providerClassName": "OnTheWayProvider",
+    "sqliteOpenHelperClassName": "OnTheWaySQLiteOpenHelper",
+    "sqliteOpenHelperCallbacksClassName": "OnTheWaySQLiteOpenHelperCallbacks",
+    "databaseFileName": "OnTheWay.db",
+    "databaseVersion": 1,
+    "enableForeignKeys": true,
+    "useAnnotations": true
+}

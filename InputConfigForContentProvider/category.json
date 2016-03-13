@@ -1,0 +1,12 @@
+{
+    "documentation": "Categoris of restaurant.",
+    "fields": [
+       
+        {
+            "documentation": "category name eg : dineout, dinner, nightlife etc",
+            "name": "category_name",
+            "type": "String",
+            "nullable": false
+        }
+        ]
+}

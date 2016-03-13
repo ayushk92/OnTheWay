@@ -1,0 +1,12 @@
+{
+    "documentation": "Zomato cuisine data.",
+    "fields": [
+       
+        {
+            "documentation": "zomato cuisine name",
+            "name": "cuisine_name",
+            "type": "String",
+            "nullable": false
+        }
+        ]
+}
