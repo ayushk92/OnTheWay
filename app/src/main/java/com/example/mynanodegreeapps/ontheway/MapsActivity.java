@@ -84,6 +84,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     private final String COST_FOR_TWO_FRAGMENT_TAG = "costfortwo";
 
+    private final String FILTER_FRAGMENT_STATE = "filterFragment";
+
     private final String RESTAURANTS_KEY = "restaurants";
 
     @Bind(R.id.costForTwoFilter)
@@ -106,13 +108,13 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     @OnClick(R.id.hasOnlineDeliveryFilter)
     void onClickHasOnlineDeliveryFilter(){
         if(RestaurantFilters.getInstance().getHasOnlineDelivery() == null){
-            hasOnlineDeliveryFilter_imageView.setBackground(getDrawable(R.color.lightGrey));
+            hasOnlineDeliveryFilter_imageView.setBackground(getDrawable(R.drawable.filteritemselected));
             RestaurantFilters.getInstance().setHasOnlineDelivery(true);
             this.onFilterChanged(2);
         }
         else
         {
-            hasOnlineDeliveryFilter_imageView.setBackground(getDrawable(R.color.grey));
+            hasOnlineDeliveryFilter_imageView.setBackground(getDrawable(R.drawable.filteritem));
             RestaurantFilters.getInstance().setHasOnlineDelivery(null);
             this.onFilterChanged(3);
         }
@@ -172,6 +174,15 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         if(routeToRestaurants != null) {
             super.onSaveInstanceState(outState);
             RestaurantFilters.getInstance().setCurrentRouteToRestaurants(routeToRestaurants);
+            if(getFragmentManager().findFragmentByTag(COST_FOR_TWO_FRAGMENT_TAG) != null)
+                getFragmentManager().putFragment(outState,
+                                                 FILTER_FRAGMENT_STATE,
+                                                 getFragmentManager().findFragmentByTag(COST_FOR_TWO_FRAGMENT_TAG));
+            else
+                getFragmentManager().putFragment(outState,
+                        FILTER_FRAGMENT_STATE,
+                        getFragmentManager().findFragmentById(R.id.filterFragment));
+
             //outState.putParcelableArrayList(RESTAURANTS_KEY, routeToRestaurants);
         }
 
@@ -181,6 +192,9 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         routeToRestaurants = RestaurantFilters.getInstance().getCurrentRouteToRestaurants();
+        getFragmentManager().beginTransaction().
+                show(getFragmentManager().getFragment(savedInstanceState, FILTER_FRAGMENT_STATE)).
+                commit();
         //routeToRestaurants = savedInstanceState.getParcelableArrayList(RESTAURANTS_KEY);
     }
 
@@ -321,6 +335,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             for(RouteToRestaurant rtr : routeToRestaurants){
                 addRestaurantsToMap(new ArrayList<Restaurant>(rtr.getRestaurants().values()));
             }
+            onFilterChanged(0);
         }
     }
 

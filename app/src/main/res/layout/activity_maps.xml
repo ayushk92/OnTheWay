@@ -22,28 +22,35 @@
         android:layout_width="match_parent"
         android:layout_height="@android:dimen/notification_large_icon_height"
         android:orientation="horizontal"
-        android:layout_gravity="bottom">
+        android:layout_gravity="bottom"
+        android:background="@color/offWhite">
         <fragment
             android:id="@+id/filterFragment"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:layout_margin="@dimen/filter_margin"
             android:name="com.example.mynanodegreeapps.ontheway.FilterFragment"/>
         <ImageView
             android:id="@+id/costForTwoFilter"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@android:color/darker_gray"
             android:src="@drawable/pricetag"
+            android:scaleType="fitCenter"
+            android:layout_margin="@dimen/filter_margin"
+            android:background="@drawable/filteritem"
             android:contentDescription="@string/costForTwoFilter"/>
         <ImageView
             android:id="@+id/hasOnlineDeliveryFilter"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@android:color/darker_gray"
+            android:layout_margin="@dimen/filter_margin"
             android:src="@drawable/onlinedelivery"
+            android:scaleType="fitCenter"
+            android:background="@drawable/filteritem"
+            android:padding="@dimen/filter_padding"
             android:contentDescription="@string/onlineDeliveryFilter"/>
 
     </LinearLayout>
