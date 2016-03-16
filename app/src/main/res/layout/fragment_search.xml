@@ -15,8 +15,9 @@
             android:layout_height="match_parent"
             android:layout_weight="10"
             android:text="@string/fromLocation"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:layout_marginTop="@dimen/activity_vertical_margin"/>
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:contentDescription="@string/fromLocation"/>
         <ImageView
             android:id="@+id/currentLocation"
             android:layout_width="0dp"
@@ -25,7 +26,8 @@
             android:layout_gravity="top|center_vertical"
             android:layout_weight="1"
             android:tint="@color/material_deep_teal_500"
-            android:layout_marginRight="@dimen/activity_horizontal_margin"/>
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            android:contentDescription="@string/currentLocation"/>
     </LinearLayout>
     <TextView
         android:id="@+id/toLocation"
@@ -33,13 +35,15 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:layout_margin="@dimen/activity_horizontal_margin"
-        android:text="@string/toLocation"/>
+        android:text="@string/toLocation"
+        android:contentDescription="@string/toLocation"/>
     <Button
         android:id="@+id/search_btn"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:layout_margin="@dimen/activity_horizontal_margin"
-        android:text="@string/search_btn" />
+        android:text="@string/search_btn"
+        android:contentDescription="@string/search_btn"/>
 
 </LinearLayout>

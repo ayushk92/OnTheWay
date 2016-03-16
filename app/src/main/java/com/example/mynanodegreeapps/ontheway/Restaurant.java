@@ -2,12 +2,13 @@ package com.example.mynanodegreeapps.ontheway;
 
 import com.google.android.gms.maps.model.LatLng;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by akhatri on 21/02/16.
  */
-public class Restaurant {
+public class Restaurant implements Serializable{
 
     private String Id;
     private String name;

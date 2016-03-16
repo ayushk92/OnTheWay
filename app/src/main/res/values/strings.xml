@@ -2,9 +2,10 @@
     <string name="app_name">OnTheWay</string>
     <string name="search_btn">Search</string>
     <string name="title_activity_maps">Map</string>
-    <string name="zomato_api_key"></string>
+    <string name="zomato_api_key">2d2a34658d021cd4d5c2bfc0275e07e4</string>
     <string name="toLocation">Enter destination..</string>
     <string name="fromLocation">Enter source..</string>
+    <string name="currentLocation">Current location</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -24,4 +25,11 @@
     <string name="underfifteenhundred">1000-1500</string>
     <string name="undertwothousand">2000+</string>
 
+    <string name="costForTwoFilter">cost for two filter</string>
+    <string name="onlineDeliveryFilter">online delivery filter</string>
+
+    <string name="homeFilter">go back to home filters</string>
+
+    <string name="searchHistory">Search History</string>
+    <string name="hyphen">TO</string>
 </resources>

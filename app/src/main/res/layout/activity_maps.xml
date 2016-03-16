@@ -10,8 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/map"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingStart="@dimen/activity_horizontal_margin"
+        android:paddingEnd="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin"
         android:paddingBottom="@dimen/activity_vertical_margin"
         tools:context="com.example.mynanodegreeapps.ontheway.MapsActivity"
@@ -35,14 +35,16 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@android:color/darker_gray"
-            android:src="@drawable/pricetag" />
+            android:src="@drawable/pricetag"
+            android:contentDescription="@string/costForTwoFilter"/>
         <ImageView
             android:id="@+id/hasOnlineDeliveryFilter"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@android:color/darker_gray"
-            android:src="@drawable/onlinedelivery" />
+            android:src="@drawable/onlinedelivery"
+            android:contentDescription="@string/onlineDeliveryFilter"/>
 
     </LinearLayout>
 

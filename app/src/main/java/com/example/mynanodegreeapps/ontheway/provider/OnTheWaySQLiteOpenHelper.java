@@ -15,6 +15,7 @@ import com.example.mynanodegreeapps.ontheway.provider.category.CategoryColumns;
 import com.example.mynanodegreeapps.ontheway.provider.city.CityColumns;
 import com.example.mynanodegreeapps.ontheway.provider.cuisine.CuisineColumns;
 import com.example.mynanodegreeapps.ontheway.provider.restaurant.RestaurantColumns;
+import com.example.mynanodegreeapps.ontheway.provider.searchhistory.SearchhistoryColumns;
 
 public class OnTheWaySQLiteOpenHelper extends SQLiteOpenHelper {
     private static final String TAG = OnTheWaySQLiteOpenHelper.class.getSimpleName();
@@ -65,6 +66,16 @@ public class OnTheWaySQLiteOpenHelper extends SQLiteOpenHelper {
             + RestaurantColumns.LATITUDE + " REAL NOT NULL, "
             + RestaurantColumns.LONGITUDE + " REAL NOT NULL, "
             + RestaurantColumns.HASONLINEDELIVERY + " INTEGER NOT NULL "
+            + " );";
+
+    public static final String SQL_CREATE_TABLE_SEARCHHISTORY = "CREATE TABLE IF NOT EXISTS "
+            + SearchhistoryColumns.TABLE_NAME + " ( "
+            + SearchhistoryColumns._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+            + SearchhistoryColumns.SOURCE_LOCATION + " TEXT NOT NULL, "
+            + SearchhistoryColumns.DESTINATION_LOCATION + " TEXT NOT NULL, "
+            + SearchhistoryColumns.SOURCE_COORDINATES + " TEXT NOT NULL, "
+            + SearchhistoryColumns.DESTINATION_COORDINATES + " TEXT NOT NULL "
+            + ", CONSTRAINT unique_coordinates UNIQUE(source_coordinates,destination_coordinates) ON CONFLICT REPLACE"
             + " );";
 
     // @formatter:on
@@ -126,6 +137,7 @@ public class OnTheWaySQLiteOpenHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_CREATE_TABLE_CITY);
         db.execSQL(SQL_CREATE_TABLE_CUISINE);
         db.execSQL(SQL_CREATE_TABLE_RESTAURANT);
+        db.execSQL(SQL_CREATE_TABLE_SEARCHHISTORY);
         mOpenHelperCallbacks.onPostCreate(mContext, db);
     }
 

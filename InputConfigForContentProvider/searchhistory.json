@@ -1,0 +1,37 @@
+{
+    "documentation": "Search history.",
+    "fields": [
+       
+        {
+            "documentation": "source location",
+            "name": "source_location",
+            "type": "String",
+            "nullable": false
+        },
+        {
+            "documentation": "destination location",
+            "name": "destination_location",
+            "type": "String",
+            "nullable": false
+        },
+        {
+            "documentation": "source coordinates",
+            "name": "source_coordinates",
+            "type": "String",
+            "nullable": false
+        },
+        {
+            "documentation": "destination coordinates",
+            "name": "destination_coordinates",
+            "type": "String",
+            "nullable": false
+        }  
+    ],		
+
+    "constraints": [
+            {
+                "name": "unique_coordinates",
+                "definition": "UNIQUE(source_coordinates,destination_coordinates) ON CONFLICT REPLACE"
+            }
+    ]
+}

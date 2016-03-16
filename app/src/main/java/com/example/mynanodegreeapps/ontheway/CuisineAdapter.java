@@ -62,6 +62,7 @@ public class CuisineAdapter extends CursorAdapter {
         ViewHolder mHolder = (ViewHolder)view.getTag();
 
         mHolder.itemName.setText(cursor.getString(ITEM_NAME));
+        mHolder.itemName.setContentDescription(cursor.getString(ITEM_NAME));
 
         if(!checkedStatus.containsKey(cursor.getLong(ITEM_ID))){
             checkedStatus.put(cursor.getLong(ITEM_ID),false);

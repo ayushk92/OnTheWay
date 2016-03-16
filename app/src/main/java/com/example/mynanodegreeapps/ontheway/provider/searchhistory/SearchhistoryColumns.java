@@ -1,4 +1,4 @@
-package com.example.mynanodegreeapps.ontheway.provider.citytocuisinemapping;
+package com.example.mynanodegreeapps.ontheway.provider.searchhistory;
 
 import android.net.Uri;
 import android.provider.BaseColumns;
@@ -12,10 +12,10 @@ import com.example.mynanodegreeapps.ontheway.provider.restaurant.RestaurantColum
 import com.example.mynanodegreeapps.ontheway.provider.searchhistory.SearchhistoryColumns;
 
 /**
- * Zomato city to cuisine mapping.
+ * Search history.
  */
-public class CitytocuisinemappingColumns implements BaseColumns {
-    public static final String TABLE_NAME = "citytocuisinemapping";
+public class SearchhistoryColumns implements BaseColumns {
+    public static final String TABLE_NAME = "searchhistory";
     public static final Uri CONTENT_URI = Uri.parse(OnTheWayProvider.CONTENT_URI_BASE + "/" + TABLE_NAME);
 
     /**
@@ -24,14 +24,24 @@ public class CitytocuisinemappingColumns implements BaseColumns {
     public static final String _ID = BaseColumns._ID;
 
     /**
-     * zomato cuisine id
+     * source location
      */
-    public static final String CUISINE_ID = "cuisine_id";
+    public static final String SOURCE_LOCATION = "source_location";
 
     /**
-     * zomato city id
+     * destination location
      */
-    public static final String CITY_ID = "city_id";
+    public static final String DESTINATION_LOCATION = "destination_location";
+
+    /**
+     * source coordinates
+     */
+    public static final String SOURCE_COORDINATES = "source_coordinates";
+
+    /**
+     * destination coordinates
+     */
+    public static final String DESTINATION_COORDINATES = "destination_coordinates";
 
 
     public static final String DEFAULT_ORDER = TABLE_NAME + "." +_ID;
@@ -39,22 +49,22 @@ public class CitytocuisinemappingColumns implements BaseColumns {
     // @formatter:off
     public static final String[] ALL_COLUMNS = new String[] {
             _ID,
-            CUISINE_ID,
-            CITY_ID
+            SOURCE_LOCATION,
+            DESTINATION_LOCATION,
+            SOURCE_COORDINATES,
+            DESTINATION_COORDINATES
     };
     // @formatter:on
 
     public static boolean hasColumns(String[] projection) {
         if (projection == null) return true;
         for (String c : projection) {
-            if (c.equals(CUISINE_ID) || c.contains("." + CUISINE_ID)) return true;
-            if (c.equals(CITY_ID) || c.contains("." + CITY_ID)) return true;
+            if (c.equals(SOURCE_LOCATION) || c.contains("." + SOURCE_LOCATION)) return true;
+            if (c.equals(DESTINATION_LOCATION) || c.contains("." + DESTINATION_LOCATION)) return true;
+            if (c.equals(SOURCE_COORDINATES) || c.contains("." + SOURCE_COORDINATES)) return true;
+            if (c.equals(DESTINATION_COORDINATES) || c.contains("." + DESTINATION_COORDINATES)) return true;
         }
         return false;
-    }
-
-    public static Uri getCuisinesOfCityUri(){
-        return CONTENT_URI.buildUpon().appendPath("city").build();
     }
 
 }

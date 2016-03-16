@@ -171,7 +171,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     protected void onSaveInstanceState(Bundle outState) {
         if(routeToRestaurants != null) {
             super.onSaveInstanceState(outState);
-            outState.putParcelableArrayList(RESTAURANTS_KEY, routeToRestaurants);
+            RestaurantFilters.getInstance().setCurrentRouteToRestaurants(routeToRestaurants);
+            //outState.putParcelableArrayList(RESTAURANTS_KEY, routeToRestaurants);
         }
 
     }
@@ -179,8 +180,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-
-        routeToRestaurants = savedInstanceState.getParcelableArrayList(RESTAURANTS_KEY);
+        routeToRestaurants = RestaurantFilters.getInstance().getCurrentRouteToRestaurants();
+        //routeToRestaurants = savedInstanceState.getParcelableArrayList(RESTAURANTS_KEY);
     }
 
     private ArrayList<Restaurant> getRestaurantsAfterFilter(){

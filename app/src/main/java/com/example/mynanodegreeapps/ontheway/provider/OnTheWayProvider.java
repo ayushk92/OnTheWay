@@ -17,6 +17,7 @@ import com.example.mynanodegreeapps.ontheway.provider.category.CategoryColumns;
 import com.example.mynanodegreeapps.ontheway.provider.city.CityColumns;
 import com.example.mynanodegreeapps.ontheway.provider.cuisine.CuisineColumns;
 import com.example.mynanodegreeapps.ontheway.provider.restaurant.RestaurantColumns;
+import com.example.mynanodegreeapps.ontheway.provider.searchhistory.SearchhistoryColumns;
 
 public class OnTheWayProvider extends BaseContentProvider {
     private static final String TAG = OnTheWayProvider.class.getSimpleName();
@@ -44,7 +45,10 @@ public class OnTheWayProvider extends BaseContentProvider {
     private static final int URI_TYPE_RESTAURANT = 8;
     private static final int URI_TYPE_RESTAURANT_ID = 9;
 
-    private static final int URI_TYPE_CUISINE_CITY = 10;
+    private static final int URI_TYPE_SEARCHHISTORY = 10;
+    private static final int URI_TYPE_SEARCHHISTORY_ID = 11;
+
+    private static final int URI_TYPE_CUISINE_CITY = 12;
 
 
 
@@ -61,8 +65,9 @@ public class OnTheWayProvider extends BaseContentProvider {
         URI_MATCHER.addURI(AUTHORITY, CuisineColumns.TABLE_NAME + "/#", URI_TYPE_CUISINE_ID);
         URI_MATCHER.addURI(AUTHORITY, RestaurantColumns.TABLE_NAME, URI_TYPE_RESTAURANT);
         URI_MATCHER.addURI(AUTHORITY, RestaurantColumns.TABLE_NAME + "/#", URI_TYPE_RESTAURANT_ID);
+        URI_MATCHER.addURI(AUTHORITY, SearchhistoryColumns.TABLE_NAME, URI_TYPE_SEARCHHISTORY);
+        URI_MATCHER.addURI(AUTHORITY, SearchhistoryColumns.TABLE_NAME + "/#", URI_TYPE_SEARCHHISTORY_ID);
         URI_MATCHER.addURI(AUTHORITY, CitytocuisinemappingColumns.TABLE_NAME + "/city", URI_TYPE_CUISINE_CITY);
-
     }
 
     @Override
@@ -83,6 +88,8 @@ public class OnTheWayProvider extends BaseContentProvider {
                 return TYPE_CURSOR_DIR + CitytocuisinemappingColumns.TABLE_NAME;
             case URI_TYPE_CITYTOCUISINEMAPPING_ID:
                 return TYPE_CURSOR_ITEM + CitytocuisinemappingColumns.TABLE_NAME;
+            case URI_TYPE_CUISINE_CITY:
+                return TYPE_CURSOR_DIR + CitytocuisinemappingColumns.TABLE_NAME;
 
             case URI_TYPE_CATEGORY:
                 return TYPE_CURSOR_DIR + CategoryColumns.TABLE_NAME;
@@ -103,8 +110,11 @@ public class OnTheWayProvider extends BaseContentProvider {
                 return TYPE_CURSOR_DIR + RestaurantColumns.TABLE_NAME;
             case URI_TYPE_RESTAURANT_ID:
                 return TYPE_CURSOR_ITEM + RestaurantColumns.TABLE_NAME;
-            case URI_TYPE_CUISINE_CITY:
-                return TYPE_CURSOR_DIR + CitytocuisinemappingColumns.TABLE_NAME;
+
+            case URI_TYPE_SEARCHHISTORY:
+                return TYPE_CURSOR_DIR + SearchhistoryColumns.TABLE_NAME;
+            case URI_TYPE_SEARCHHISTORY_ID:
+                return TYPE_CURSOR_ITEM + SearchhistoryColumns.TABLE_NAME;
 
         }
         return null;
@@ -187,6 +197,14 @@ public class OnTheWayProvider extends BaseContentProvider {
                 res.tablesWithJoins = RestaurantColumns.TABLE_NAME;
                 res.orderBy = RestaurantColumns.DEFAULT_ORDER;
                 break;
+
+            case URI_TYPE_SEARCHHISTORY:
+            case URI_TYPE_SEARCHHISTORY_ID:
+                res.table = SearchhistoryColumns.TABLE_NAME;
+                res.idColumn = SearchhistoryColumns._ID;
+                res.tablesWithJoins = SearchhistoryColumns.TABLE_NAME;
+                res.orderBy = SearchhistoryColumns.DEFAULT_ORDER;
+                break;
             case URI_TYPE_CUISINE_CITY:
                 res.tablesWithJoins =
                         CuisineColumns.TABLE_NAME + " INNER JOIN " + CitytocuisinemappingColumns.TABLE_NAME + " ON "
@@ -207,6 +225,7 @@ public class OnTheWayProvider extends BaseContentProvider {
             case URI_TYPE_CITY_ID:
             case URI_TYPE_CUISINE_ID:
             case URI_TYPE_RESTAURANT_ID:
+            case URI_TYPE_SEARCHHISTORY_ID:
                 id = uri.getLastPathSegment();
         }
         if (id != null) {

@@ -52,6 +52,21 @@
         <activity
             android:name=".FilterListActivity"
             android:label="@string/title_cuisine" />
+
+        <receiver
+            android:name=".widget.SearchHistoryCollectionWidget"
+            android:label="@string/searchHistory"
+            >
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider"
+                android:resource="@xml/searchhistory_widget_providerinfo" />
+        </receiver>
+        <service
+            android:name=".SearchHistoryWidgetRemoteService"
+            android:exported="false"
+            android:permission="android.permission.BIND_REMOTEVIEWS" />
     </application>
 
 </manifest>

@@ -2,9 +2,11 @@ package com.example.mynanodegreeapps.ontheway;
 
 
 //import android.app.Fragment;
+import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.location.Geocoder;
+import android.net.Uri;
 import android.os.Handler;
 import android.os.ResultReceiver;
 import android.support.v4.app.Fragment;
@@ -23,6 +25,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.mynanodegreeapps.ontheway.provider.searchhistory.SearchhistoryColumns;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
@@ -150,6 +153,22 @@ public class SearchFragment extends android.app.Fragment implements GoogleApiCli
         super.onActivityCreated(savedInstanceState);
     }
 
+    private void addSearchHistory(String source_location,String source_coordinates,
+                                  String destination_location, String destination_coordinates){
+        ContentValues searchHistory = new ContentValues();
+        searchHistory.put(SearchhistoryColumns.SOURCE_LOCATION,source_location);
+        searchHistory.put(SearchhistoryColumns.SOURCE_COORDINATES,source_coordinates);
+        searchHistory.put(SearchhistoryColumns.DESTINATION_LOCATION,destination_location);
+        searchHistory.put(SearchhistoryColumns.DESTINATION_COORDINATES, destination_coordinates);
+
+        Uri inserted_uri = getActivity().getContentResolver().insert(SearchhistoryColumns.CONTENT_URI,
+                                                  searchHistory);
+
+        //Update widget after getting data
+        Intent intent = new Intent(Constants.SEARCH_HISTORY_DATA_UPDATED);
+        getActivity().sendBroadcast(intent);
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View rootView =  inflater.inflate(R.layout.fragment_search,container,false);
@@ -159,6 +178,10 @@ public class SearchFragment extends android.app.Fragment implements GoogleApiCli
         searchBtn.setOnClickListener(new View.OnClickListener() {
                                          @Override
                                          public void onClick(View v) {
+                                             addSearchHistory(((TextView)rootView.findViewById(R.id.fromLocation)).getText().toString(),
+                                                               mfromLocation,
+                                                               ((TextView)rootView.findViewById(R.id.toLocation)).getText().toString(),
+                                                              mtoLocation);
                                              Intent mapIntent = new Intent(getActivity(), MapsActivity.class);
                                              mapIntent.putExtra("fromLocation", (mfromLocation));
                                              mapIntent.putExtra("toLocation", mtoLocation);

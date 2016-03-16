@@ -9,6 +9,7 @@ import com.example.mynanodegreeapps.ontheway.provider.category.CategoryColumns;
 import com.example.mynanodegreeapps.ontheway.provider.city.CityColumns;
 import com.example.mynanodegreeapps.ontheway.provider.cuisine.CuisineColumns;
 import com.example.mynanodegreeapps.ontheway.provider.restaurant.RestaurantColumns;
+import com.example.mynanodegreeapps.ontheway.provider.searchhistory.SearchhistoryColumns;
 
 /**
  * Zomato city data.

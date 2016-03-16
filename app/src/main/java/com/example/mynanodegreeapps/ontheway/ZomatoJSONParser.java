@@ -54,7 +54,7 @@ public class ZomatoJSONParser {
                 }
                 int costForTwoCategory = Integer.parseInt(jsonObject1.get(COST_FOR_TWO_CATEGORY_KEY).toString());
 
-                boolean hasOnlineDelivery = Boolean.parseBoolean(jsonObject1.getString(HAS_ONLINE_DELIVERY));
+                boolean hasOnlineDelivery = "1".equals(jsonObject1.getString(HAS_ONLINE_DELIVERY));
 
                 restaurants.add(new Restaurant(Id,name,position,costForTwoCategory,cuisines,hasOnlineDelivery));
             }
