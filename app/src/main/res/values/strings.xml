@@ -20,7 +20,7 @@
     <string name="action_apply">Apply</string>
     <string name="action_filterselect">Filter</string>
     <string name="filter_title">Filter</string>
-    <string name="underfivehundred">0-500</string>
+    <string name="underfivehundred">0 - 500</string>
     <string name="underthousand">500-1000</string>
     <string name="underfifteenhundred">1000-1500</string>
     <string name="undertwothousand">2000+</string>

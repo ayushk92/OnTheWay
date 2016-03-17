@@ -5,9 +5,6 @@
     android:id="@+id/cuisineFilter"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    android:textColor="@color/lightGrey"
-    android:background="@drawable/filteritem"
-    android:padding="@dimen/filter_padding"
+    style="@style/FilterStyle"
     android:text="@string/cuisine_textView"/>
 

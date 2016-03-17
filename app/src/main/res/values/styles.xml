@@ -12,4 +12,19 @@
         <item name="android:textColor">@color/background_material_dark</item>
     </style>
 
+    <style name="FilterStyle">
+        <item name="android:background">@drawable/filteritem</item>
+        <item name="android:padding">@dimen/filter_padding</item>
+        <item name="android:layout_margin">@dimen/filter_margin</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/lightGrey</item>
+    </style>
+    <style name="FilterImageViewStyle">
+        <item name="android:background">@drawable/filteritem</item>
+        <item name="android:layout_margin">@dimen/filter_margin</item>
+        <item name="android:padding">@dimen/filter_padding</item>
+        <item name="android:gravity">center</item>
+        <item name="android:scaleType">fitCenter</item>
+    </style>
+
 </resources>

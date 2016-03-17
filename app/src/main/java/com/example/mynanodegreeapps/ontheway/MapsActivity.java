@@ -38,6 +38,7 @@ import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlaceAutocompleteFragment;
 import com.google.android.gms.location.places.ui.PlaceSelectionListener;
+import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -280,6 +281,19 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             return null;
     }
 
+    private void moveCameraOverRoute(){
+        LatLngBounds.Builder builder = new LatLngBounds.Builder();
+        builder.include(new LatLng(Double.parseDouble(mfromLocation.split(",")[0]),
+                Double.parseDouble(mfromLocation.split(",")[1])));
+        builder.include(new LatLng(Double.parseDouble(mtoLocation.split(",")[0]),
+                Double.parseDouble(mtoLocation.split(",")[1])));
+
+        LatLngBounds latLngBounds = builder.build();
+        int padding = 20;
+        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngBounds(latLngBounds,padding);
+        mMap.moveCamera(cameraUpdate);
+    }
+
     @Override
     public void onLoadFinished(Loader<ArrayList<RouteToRestaurant>> loader, ArrayList<RouteToRestaurant> data) {
         routeToRestaurants = data;
@@ -287,6 +301,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         PolylineOptions lineOptions = null;
         if(mMap != null)
             mMap.clear();
+
 
 
         for (RouteToRestaurant rtr : routeToRestaurants) {
@@ -297,6 +312,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             for (Restaurant resto : rtr.getRestaurants().values())
                 mMap.addMarker(new MarkerOptions().position(resto.getLocation()).title(resto.getName()));
         }
+        moveCameraOverRoute();
 //        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(data[0].getRoutePoints()[0],
 //                                                                     data[0].getRoutePoints()[1]),15));
 

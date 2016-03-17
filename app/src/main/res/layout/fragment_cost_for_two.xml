@@ -3,101 +3,70 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
-    android:background="@android:color/darker_gray"
+    android:background="@color/offWhite"
     tools:context="com.example.mynanodegreeapps.ontheway.CostForTwoFragment">
 
     <!-- TODO: Update blank fragment layout -->
+
     <ImageView
         android:id="@+id/homeFilter"
+        style="@style/FilterStyle"
         android:layout_width="0dp"
         android:layout_weight="1"
         android:layout_height="match_parent"
-        android:src="@drawable/filter_icon"
+        android:src="@drawable/home"
+        android:scaleType="fitCenter"
         android:contentDescription="@string/homeFilter"
+        android:elevation="4dp"
         />
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        android:contentDescription="@string/underfivehundred">
-        <ImageView
+    <HorizontalScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+        <TextView
             android:id="@+id/underfivehundred"
-            android:layout_width="match_parent"
-            android:layout_weight="2"
-            android:layout_height="0dp"
-            android:src="@drawable/rupee"
-            />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            style="@style/FilterStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             android:text="@string/underfivehundred"
+            android:contentDescription="@string/underfivehundred"
             />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        android:contentDescription="@string/underthousand">
-        <ImageView
+        <TextView
             android:id="@+id/underthousand"
-            android:layout_width="match_parent"
-            android:layout_weight="2"
-            android:layout_height="0dp"
-            android:src="@drawable/rupee"
-            />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
+            style="@style/FilterStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
+            android:gravity="center"
             android:text="@string/underthousand"
+            android:contentDescription="@string/underthousand"
             />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        android:contentDescription="@string/underfifteenhundred">
-        <ImageView
+        <TextView
             android:id="@+id/underfifteenhundred"
-            android:layout_width="match_parent"
-            android:layout_weight="2"
-            android:layout_height="0dp"
-            android:src="@drawable/rupee"
-            />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
+            style="@style/FilterStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
+            android:gravity="center"
             android:text="@string/underfifteenhundred"
+            android:contentDescription="@string/underfifteenhundred"
             />
-    </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        android:contentDescription="@string/undertwothousand">
-        <ImageView
-            android:id="@+id/abovetwothousand"
-            android:layout_width="match_parent"
-            android:layout_weight="2"
-            android:layout_height="0dp"
-            android:src="@drawable/rupee"
-            />
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:id="@+id/abovetwothousand"
+            style="@style/FilterStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
+            android:gravity="center"
             android:text="@string/undertwothousand"
+            android:contentDescription="@string/undertwothousand"
             />
-    </LinearLayout>
+        </LinearLayout>
+    </HorizontalScrollView>
 
 
 </LinearLayout>

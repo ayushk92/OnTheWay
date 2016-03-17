@@ -37,20 +37,15 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:src="@drawable/pricetag"
-            android:scaleType="fitCenter"
-            android:layout_margin="@dimen/filter_margin"
-            android:background="@drawable/filteritem"
+            style="@style/FilterImageViewStyle"
             android:contentDescription="@string/costForTwoFilter"/>
         <ImageView
             android:id="@+id/hasOnlineDeliveryFilter"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:layout_margin="@dimen/filter_margin"
             android:src="@drawable/onlinedelivery"
-            android:scaleType="fitCenter"
-            android:background="@drawable/filteritem"
-            android:padding="@dimen/filter_padding"
+            style="@style/FilterImageViewStyle"
             android:contentDescription="@string/onlineDeliveryFilter"/>
 
     </LinearLayout>
